@@ -1,3 +1,4 @@
+[![Continuous Integration and deployment](https://github.com/McebisiMK/CurrencyExchange/actions/workflows/dotnet.yml/badge.svg)](https://github.com/McebisiMK/CurrencyExchange/actions/workflows/dotnet.yml)
 # CurrencyExchange
 Interacts with public currency exchange API and Save the Data to **MySQL** and **Redis Cache**.
 
