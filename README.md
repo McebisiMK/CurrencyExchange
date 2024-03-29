@@ -12,7 +12,7 @@ PROJECT SETUP
 - Setup Redis Server using the following Docker commands
     ```
     // Docker container called redis-cache mapped to host machine port 90 running in detached mode.
-    Command: docker run --name redis-cache - 90:6379 -d redis
+    Command: docker run --name redis-cache -p 90:6379 -d redis
 
     // Launch the shell
     command: docker exec -it redis-cache sh
