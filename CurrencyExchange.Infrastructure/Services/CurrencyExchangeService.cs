@@ -23,7 +23,7 @@ namespace CurrencyExchange.Infrastructure.Services
 
         public async Task<ConversionModel> Convert(string baseCurrency, string targetCurrency, decimal amount)
         {
-            var relativeUrl = $"/convert?api_key={apiKey}&from={baseCurrency}&to={targetCurrency}&amount={amount}";
+            var relativeUrl = $"/convert?api_key={apiKey}&from={baseCurrency.ToUpper()}&to={targetCurrency.ToUpper()}&amount={amount}";
             var response = await _httpClient.GetAsync(relativeUrl);
 
             var currencyConversion = new ConversionModel();
@@ -48,7 +48,7 @@ namespace CurrencyExchange.Infrastructure.Services
 
         public async Task<RateModel> GetLatestRates(string baseCurrency)
         {
-            var relativeUrl = $"/fetch-all?api_key={apiKey}&from={baseCurrency}";
+            var relativeUrl = $"/fetch-all?api_key={apiKey}&from={baseCurrency.ToUpper()}";
             var response = await _httpClient.GetAsync(relativeUrl);
 
             var currencyRates = new RateModel();
