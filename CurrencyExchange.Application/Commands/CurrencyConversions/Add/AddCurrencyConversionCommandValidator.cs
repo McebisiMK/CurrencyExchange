@@ -8,11 +8,11 @@ namespace CurrencyExchange.Application.Commands.CurrencyConversions.Add
         {
             RuleFor(request => request.Base)
              .NotEmpty()
-             .WithMessage("Base is require!");
+             .WithMessage("Base is required!");
 
             RuleFor(request => request.Result)
              .NotEmpty()
-             .WithMessage("Result is require!");
+             .WithMessage("Result is required!");
         }
     }
 }
