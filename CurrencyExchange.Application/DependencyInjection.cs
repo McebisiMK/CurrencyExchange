@@ -2,6 +2,8 @@
 using CurrencyExchange.Application.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 using FluentValidation.AspNetCore;
+using FluentValidation;
+using MediatR;
 
 namespace CurrencyExchange.Application
 {
@@ -10,11 +12,8 @@ namespace CurrencyExchange.Application
         public static IServiceCollection RegisterApplication(this IServiceCollection services)
         {
             services.AddTransient<IValidatorInterceptor, RequestValidatorInterceptor>();
-            services.AddFluentValidation(config =>
-            {
-                config.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-                config.AutomaticValidationEnabled = true;
-            });
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
             services.AddMediatR(config => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
